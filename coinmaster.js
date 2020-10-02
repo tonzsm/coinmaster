@@ -326,7 +326,25 @@ class CoinMaster {
       extra: false
     });
     console.log("Daily spin : ", result.reward);
+    const nexttime = await this.convertMS(result.msToNextDailyBonus);
+	  console.log("Daily bonus next time: ".concat(nexttime.hour + "h:" + nexttime.minute + "m:" + nexttime.seconds + "s").yellow);
   }
+  async convertMS( milliseconds ) {
+		var day, hour, minute, seconds;
+		seconds = Math.floor(milliseconds / 1000);
+		minute = Math.floor(seconds / 60);
+		seconds = seconds % 60;
+		hour = Math.floor(minute / 60);
+		minute = minute % 60;
+		day = Math.floor(hour / 24);
+		hour = hour % 24;
+		return {
+			day: day,
+			hour: hour,
+			minute: minute,
+			seconds: seconds
+		};
+	}
   async post(url, data, retry) {
     if (url.indexOf("http") === -1) {
       url = `https://vik-game.moonactive.net/api/v1/users/${this.userId}/${url}`;
