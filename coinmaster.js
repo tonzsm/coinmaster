@@ -687,21 +687,22 @@ class CoinMaster {
   }
   async claimTodayRewardsV1() {
     const {
-      data
-    } = await axios.get("https://raw.githubusercontent.com/samuraitruong/cm-spin/master/public/data.json");
-    for (const item of data.splice(0, 3)) {
+      data //https://raw.githubusercontent.com/samuraitruong/cm-spin/master/public/data.json
+    } = await axios.get("https://raw.githubusercontent.com/samuraitruong/cm-spin/master/public/freespinandcoin.blogspot.com.json");
+    for (const item of data) {
       await this.claimReward(item.code);
     }
   }
   async claimTodayRewards() {
     try {
       const {
-        data
-      } = await axios.get("https://cm-spin.herokuapp.com/");
+        data //https://cm-spin.herokuapp.com/
+      } = await axios.get("https://raw.githubusercontent.com/samuraitruong/cm-spin/master/public/haktuts.blogspot.com.json");
       const ids = []
       for (let i = 0; i < Math.min(this.numberOfDailyReward, data.length); i++) {
         try {
           let query = qs.parse(data[i].url.split('?')[1], "&", "=");
+		  //console.log(query)
           if (query.c) {
             await this.claimReward(query.c);
           } else {
@@ -721,12 +722,11 @@ class CoinMaster {
             query = qs.parse(htmlResposne.data.split('?')[1], "&", "=");
             if (query.c) {
               await this.claimReward(query.c);
-
             }
 
           }
         } catch (err) {
-
+			console.log(err.red)
         }
       }
     } catch (err) {
