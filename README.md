@@ -23,6 +23,7 @@ To get above information, You need to follow below step
 ## run
 
 ```sh 
+npm install
 node index.js
 
 ```
