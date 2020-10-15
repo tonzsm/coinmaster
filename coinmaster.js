@@ -97,7 +97,7 @@ class CoinMaster {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "authorization": "Bearer " + this.authToken,
-        "x-client-version": "3.5.62",
+        "x-client-version": "3.5.165",
         "user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36",
         "x-platform": "WebGL"
       }
@@ -1187,7 +1187,7 @@ class CoinMaster {
       event: "device_info",
       msg: {
         os: "WebGL",
-        app_version: "3.5.27",
+        app_version: "3.5.165",
         model: "",
         brand: "",
         manufacturer: "",
